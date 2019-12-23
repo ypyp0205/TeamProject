@@ -1,17 +1,21 @@
 package Service;
 
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import VO.BookVO;
 import Dao.BookDao;
 import Dao.LoginDao;
-import VO.LoginSessionVO;
-
-import java.io.PrintStream;
-import java.util.Scanner;
 
 public class DisPlayMenu {
     private PrintStream printStream = new PrintStream(System.out);
     private BookDao bookDao = new BookDao();
     private LoginDao  loginDao=new LoginDao();
-
+    BookVO[] bookVO = new BookVO[5];
+    public static List<BookVO> BookList=new ArrayList<>();
+    
     public void defaultMenu(){
         printStream.println("종료라고 입력하시면 첫 화면으로  이동합니다..");
         printStream.println("1.도서검색");
@@ -28,20 +32,20 @@ public class DisPlayMenu {
             selectedNum = scanner.nextLine();
             if (selectedNum.equals("1")) {
                 System.out.println("도서검색");
+                
+                for (int i = 0; i < bookVO.length; i++) {
+					if(scanner.equals(BookList)){
+						System.out.println("123");
+					}
+				}
             } else if (selectedNum.equals("2")) {
                 System.out.println("베스트셀러 목록을 보여주는 함수");
             } else if (selectedNum.equals("3")) {
-              /* if( LoginDao.loginSessionVO==null||LoginDao.loginSessionVO.equals("")){
-                   loginDao.login();
-               }
-               else{
-                   //System.out.println(LoginDao.loginSessionVO.getId());
-                   bookDao.searchBuyBook();
-               }*/
+             
               loginDao.login();
             } else if (selectedNum.equals("종료")) {
                 defaultMenu();
-                //세션 반납 로그아웃
+              
 
                 break;
 
