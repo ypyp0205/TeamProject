@@ -2,7 +2,7 @@ package Service;
 
 public interface BookService {
     public void registBook();
-    public void rentalBook();
-    public void returnBook();
-    public void  searchBook();
+    public void searchBook();
+    public void searchBuyBook();
+    public void bookRating();
 }

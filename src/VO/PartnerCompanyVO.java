@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PartnerCompanyVO {
-    private String companyName;
-    private String agentName;
-    private List<BookVO> publishingBook=new ArrayList<BookVO>();
-    private String directorName;
-    private String directPhoneNumber;
+    private String companyName;//회사이름
+    private String agentName;//대표이름
+    private List<BookVO> publishingBooks= new ArrayList<>();//출판된 책 목록
+    private String directorName;//담당자이름
+    private String directPhoneNumber;//담당자 번호
 
     public String getCompanyName() {
         return companyName;
@@ -27,11 +27,11 @@ public class PartnerCompanyVO {
     }
 
     public List<BookVO> getPublishingBook() {
-        return publishingBook;
+        return publishingBooks;
     }
 
-    public void setPublishingBook(List<BookVO> publishingBook) {
-        this.publishingBook = publishingBook;
+    public void setPublishingBook(List<BookVO> publishingBooks) {
+        this.publishingBooks = publishingBooks;
     }
 
     public String getDirectorName() {

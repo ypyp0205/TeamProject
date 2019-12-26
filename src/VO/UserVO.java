@@ -4,12 +4,24 @@ public class UserVO {
     private static int userNumber = 0;
     private String name;
     private String id;
-    private int point;
+    private String address;
+    private String phonNumber;
+	private int point;
     private String regDate;
     private String password;
     private String roll;
+    private String card;
+    private String CardNum;
+    
+    
+    	
+    
+    
+    
+    
+   
 
-    public UserVO() {
+	public UserVO() {
         userNumber++;
     }
 
@@ -57,8 +69,45 @@ public class UserVO {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPhonNumber() {
+		return phonNumber;
+	}
+
+	public void setPhonNumber(String phonNumber) {
+		this.phonNumber = phonNumber;
+	}
 
     public String getRoll() {        return roll;   }
 
     public void setRoll(String roll) {       this.roll = roll;    }
+
+	public String getCard() {
+		return card;
+	}
+
+	public void setCard(String card) {
+		this.card = card;
+	}
+
+	public String getCardNum() {
+		return CardNum;
+	}
+
+	public void setCardNum(String cardNum) {
+		CardNum = cardNum;
+	}
+    
+	
+	
+	
+	
 }

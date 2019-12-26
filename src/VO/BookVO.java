@@ -1,25 +1,41 @@
 package VO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BookVO {
 
     private String name;//책이름
     private String authorName;//작가이름
     private String categoryName;//카테고리
-
-    private boolean isRentaled;//대여여부
     private String regDate;//책등록일자
-    private String startRenDate;//대여시작일
-    private String endRenDate;//대여 끝난일
-    private static int management=0;
-    private int countOfbook=0;
+    private static int management = 0;//관리 번호
+    private int countOfbook = 0;//재고
+    private String publishCompanyName;//출판사 이름
+    private int PriceBook;
+    private long sales;//판매량
+    private List<BookVO> PaymentDao = new ArrayList<>();
+  
+
     
+    
+    
+    
+    
+    
+    
+	public List<BookVO> getPaymentDao() {
+		return PaymentDao;
+	}
 
+	public void setPaymentDao(List<BookVO> paymentDao) {
+		PaymentDao = paymentDao;
+	}
 
-
-    public BookVO() {
-        this.isRentaled=false;
+	public BookVO() {
         management++;
     }
+
     public String getName() {
         return name;
     }
@@ -44,37 +60,10 @@ public class BookVO {
         this.categoryName = categoryName;
     }
 
-    public boolean isRentaled() {
-        return isRentaled;
-    }
-
-    public void setRentaled(boolean rentaled) {
-        isRentaled = rentaled;
-    }
-
-    public String getRegDate() {
-
-        return regDate;
-    }
+    public String getRegDate() { return regDate;  }
 
     public void setRegDate(String regDate) {
         this.regDate = regDate;
-    }
-
-    public String getStartRenDate() {
-        return startRenDate;
-    }
-
-    public void setStartRenDate(String startRenDate) {
-        this.startRenDate = startRenDate;
-    }
-
-    public String getEndRenDate() {
-        return endRenDate;
-    }
-
-    public void setEndRenDate(String endRenDate) {
-        this.endRenDate = endRenDate;
     }
 
     public static int getManagement() {
@@ -85,11 +74,28 @@ public class BookVO {
         BookVO.management = management;
     }
 
-    public int getCountOfbook() {
-        return countOfbook;
-    }
+    public int getCountOfbook() { return countOfbook; }
 
-    public void setCountOfbook(int countOfbook) {
-        this.countOfbook = countOfbook;
-    }
+    public void setCountOfbook(int countOfbook) {   this.countOfbook = countOfbook;    }
+
+    public String getPublishCompanyName() {  return publishCompanyName;  }
+
+    public void setPublishCompanyName(String publishCompanyName) {     this.publishCompanyName = publishCompanyName;   }
+
+	public long getSales() {
+		return sales;
+	}
+
+	public void setSales(long sales) {
+		this.sales = sales;
+	}
+
+	public int getPriceBook() {
+		return PriceBook;
+	}
+
+	public void setPriceBook(int priceBook) {
+		PriceBook = priceBook;
+	}
+    
 }

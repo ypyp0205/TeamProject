@@ -1,36 +1,20 @@
 package Controller;
 
-import java.io.ObjectInputStream.GetField;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
+import java.util.jar.Attributes.Name;
 
 import Dao.BookDao;
+import Dao.PaymentDao;
 import Dao.UserDao;
-import Service.DisPlayMenu;
+
+import Service.DisplayMenu;
 import VO.BookVO;
 import VO.UserVO;
 
 public class MainController {
 
     public static void main(String[] args) {
-    	
-    	BookDao dao = new BookDao();
-    	BookVO vo = new BookVO();
-    
-    	
-    	for (int i = 0; i < dao.BookList.size();  i++) {
-    		
-    		
-    		if(vo.getName().equals("자바의 정석")){
-			System.out.println("123");
-    		}
-		}
-    	
-    	
-    	
-    	
-    	
-        DisPlayMenu disPlayMenu=new DisPlayMenu();
+    	DisplayMenu disPlayMenu=new DisplayMenu();
         disPlayMenu.defaultMenu();
         for (BookVO temp :BookDao.BookList) {
             System.out.println(temp.getName()+" "+ temp.getCountOfbook());
@@ -40,5 +24,29 @@ public class MainController {
         }
 
 
+    
+    	
+    /*	UserDao ud = new UserDao();
+    	
+    	System.out.println(ud.userList.get(1).getCardNum());
+    	
+    	BookDao bookdao = new BookDao();
+    	
+    	System.out.println(bookdao.BookList.get(0).getPriceBook());
+    	*/
+    
+    	
+    	
+    	
+
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
     }
 }

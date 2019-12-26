@@ -12,7 +12,6 @@ public class LoginServiceImpl implements LoginService {
 
      @Override
     public boolean longinCheck(UserVO userVO) {
-       boolean isLogin= loginDao.loginCheck(userVO);
-       return  isLogin;
+         return loginDao.loginCheck(userVO);
     }
 }

@@ -2,25 +2,33 @@ package Service;
 
 import Dao.BookDao;
 
+
 public class BookSeviceImpl  implements  BookService{
     public BookDao bookDao=new BookDao();
-    @Override
-    public void registBook() {
-
-    }
 
     @Override
-    public void rentalBook() {
+    public void registBook() {   bookDao.registBook();    }
 
-    }
+
+	@Override
+	public void searchBook() {
+	  bookDao.searchBook();
+		
+	}
 
     @Override
-    public void returnBook() {
-
+    public void searchBuyBook() {
+       bookDao.searchBuyBook();
     }
 
-    @Override
-    public void searchBook() {
 
-    }
+	@Override
+	public void bookRating() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
 }
