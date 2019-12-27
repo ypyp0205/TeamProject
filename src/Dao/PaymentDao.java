@@ -55,6 +55,8 @@ public void payment(){
 					} else if (InPut.equals("n")) {
 						dpm.defaultMenu();
 
+					}else{
+						dpm.defaultMenu();
 					}
 
 				}
