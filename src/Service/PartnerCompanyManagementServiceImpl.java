@@ -3,7 +3,7 @@ package Service;
 import Dao.PartnerCompanyDao;
 
 public class PartnerCompanyManagementServiceImpl implements PartnerCompanyManagementService {
-    public PartnerCompanyDao partnerCompanyDao = new PartnerCompanyDao();
+PartnerCompanyDao partnerCompanyDao=new PartnerCompanyDao();
     @Override
     public void addPartnerCompany() {
         partnerCompanyDao.addPartnerCompany();
@@ -11,6 +11,11 @@ public class PartnerCompanyManagementServiceImpl implements PartnerCompanyManage
 
     @Override
     public void deletePartnerCompany() {
-        partnerCompanyDao.deletePaterCompany();
+        partnerCompanyDao.deletePartnerCompany();
+    }
+
+    @Override
+    public void addTransactionalInformation() {
+        partnerCompanyDao.addTransactionalInformation();
     }
 }

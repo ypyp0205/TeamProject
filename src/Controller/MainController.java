@@ -1,52 +1,38 @@
 package Controller;
 
-import java.util.Scanner;
-import java.util.jar.Attributes.Name;
-
 import Dao.BookDao;
-import Dao.PaymentDao;
-import Dao.UserDao;
-
+import Dao.BookShoppingBasketDao;
 import Service.DisplayMenu;
 import VO.BookVO;
-import VO.UserVO;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class MainController {
 
     public static void main(String[] args) {
-    	DisplayMenu disPlayMenu=new DisplayMenu();
+       DisplayMenu disPlayMenu = new DisplayMenu();
         disPlayMenu.defaultMenu();
-        for (BookVO temp :BookDao.BookList) {
-            System.out.println(temp.getName()+" "+ temp.getCountOfbook());
+
+//        BookShoppingBasketDao bookShoppingBasketDao=new BookShoppingBasketDao();
+  //      bookShoppingBasketDao.bookShoppingBasketMenu();
+    //
+        //      bookShoppingBasketDao.bookBasketList();
+       /* List<BookVO> list= BookDao.BookList;
+        BookVO vo =new BookVO();
+        for(int i=0;i<list.size()-1;i++){
+            for(int j=i+1;j<list.size();j++){
+                if(list.get(i).getSalePoint()<list.get(j).getSalePoint()){
+                    int temp =list.get(j).getSalePoint();
+                    list.get(j).setSalePoint(list.get(i).getSalePoint());
+                    list.get(i).setSalePoint(temp);
+                }
+            }
         }
-        for(UserVO temp: UserDao.userList){
-            System.out.println(temp.getId());
+        for (BookVO temp:list) {
+            System.out.println(temp.getSalePoint());
         }
+*/
 
-
-    
-    	
-    /*	UserDao ud = new UserDao();
-    	
-    	System.out.println(ud.userList.get(1).getCardNum());
-    	
-    	BookDao bookdao = new BookDao();
-    	
-    	System.out.println(bookdao.BookList.get(0).getPriceBook());
-    	*/
-    
-    	
-    	
-    	
-
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
     }
 }

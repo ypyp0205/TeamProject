@@ -1,6 +1,6 @@
 package Service;
 
 public interface PaymentService {
-
-	public void card();
+    public void payList();
+    public void pay();
 }

@@ -10,18 +10,8 @@ public class UserVO {
     private String regDate;
     private String password;
     private String roll;
-    private String card;
-    private String CardNum;
-    
-    
-    	
-    
-    
-    
-    
-   
 
-	public UserVO() {
+    public UserVO() {
         userNumber++;
     }
 
@@ -89,25 +79,4 @@ public class UserVO {
     public String getRoll() {        return roll;   }
 
     public void setRoll(String roll) {       this.roll = roll;    }
-
-	public String getCard() {
-		return card;
-	}
-
-	public void setCard(String card) {
-		this.card = card;
-	}
-
-	public String getCardNum() {
-		return CardNum;
-	}
-
-	public void setCardNum(String cardNum) {
-		CardNum = cardNum;
-	}
-    
-	
-	
-	
-	
 }

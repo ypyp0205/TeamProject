@@ -1,40 +1,57 @@
 package Dao;
+
 import VO.PartnerCompanyVO;
+
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class PartnerCompanyDao {
-    public static List<PartnerCompanyVO> partnerCompanies =new ArrayList<>();
-public void addPartnerCompany(){
-    Scanner scanner=new Scanner(System.in);
-    String companyName;//회사이름
-    String agentName;//대표이름
-    //List<BookVO> publishingBooks= new ArrayList<>();//출판된 책 목록
-    String directorName;//담당자이름
-    String directPhoneNumber;//담당자 번호
-    System.out.println("협력사 추가 기능");
-    System.out.println("출판사 이름:");
-    companyName=scanner.nextLine();
-    System.out.println("대표자 이름:");
-    agentName=scanner.nextLine();
-    System.out.println("담당자 이름:");
-    directorName=scanner.nextLine();
-    System.out.println("담담자 연락처:");
-    directPhoneNumber=scanner.nextLine();
-    PartnerCompanyVO partnerCompanyVO=new PartnerCompanyVO();
-    partnerCompanyVO.setAgentName(agentName);
-    partnerCompanyVO.setCompanyName(companyName);
-    partnerCompanyVO.setDirectorName(directorName);
-    partnerCompanyVO.setDirectPhoneNumber(directPhoneNumber);
-    for(int i=0;i<BookDao.BookList.size();i++) {
-        if (BookDao.BookList.get(i).getPublishCompanyName().equals(companyName)){
-            PartnerCompanyDao.partnerCompanies.get(i).setPublishingBook(BookDao.BookList);
-        }
-        for (PartnerCompanyVO vo:partnerCompanies  ) {
-            System.out.println(vo.getPublishingBook().get(0).getPublishCompanyName());
+    public static ArrayList<PartnerCompanyVO> partnerCompanys = new ArrayList<>();
+
+    public void addPartnerCompany() {
+        Scanner scanner = new Scanner(System.in);
+        String companyName;
+        String agentName;
+        String directorName;
+        String directPhoneNumber;
+        System.out.print("회사이름 입력: ");
+        companyName = scanner.nextLine();
+        System.out.println("대표자이름 입력:");
+        agentName = scanner.nextLine();
+        System.out.println("담당자 이름 입력:");
+        directorName = scanner.nextLine();
+        System.out.println("담당자 연락처 입력:");
+        directPhoneNumber = scanner.nextLine();
+        PartnerCompanyVO partnerCompanyVO = new PartnerCompanyVO();
+        partnerCompanyVO.setCompanyName(companyName);
+        partnerCompanyVO.setDirectPhoneNumber(directPhoneNumber);
+        partnerCompanyVO.setDirectorName(directorName);
+        partnerCompanyVO.setAgentName(agentName);
+        int searchIdx = 0;
+        for (int i = 0; i < BookDao.BookList.size(); i++) {
+            if (BookDao.BookList.get(i).getPublishCompanyName().equals(companyName)) {
+                searchIdx = i;
+                break;
+            }
+            partnerCompanyVO.setPublishingBook(BookDao.BookList.get(searchIdx).getName());
+            partnerCompanys.add(partnerCompanyVO);
         }
     }
-}
-public void deletePaterCompany(){}
+
+    public void deletePartnerCompany() {
+        Scanner scanner = new Scanner(System.in);
+        String companyName;
+        System.out.print("회사 이름을 입력하세요:");
+        companyName = scanner.nextLine();
+        for (int i = 0; i < partnerCompanys.size(); i++) {
+            if (partnerCompanys.get(i).getCompanyName().equals(companyName)) {
+                partnerCompanys.remove(i);
+            }
+        }
+    }
+
+    public void addTransactionalInformation() {
+
+
+    }
 }

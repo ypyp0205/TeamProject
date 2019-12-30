@@ -3,14 +3,14 @@ package Service;
 import Dao.PaymentDao;
 
 public class PaymentServiceImpl implements PaymentService {
-	
-	public PaymentDao paydao = new PaymentDao();
-	
-	@Override
-	public void card() {
+PaymentDao paymentDao=new PaymentDao();
+    @Override
+    public void payList() {
+        paymentDao.payList();
+    }
 
-	}
-	public void payment(){
-		paydao.payment();
-	}
+    @Override
+    public void pay() {
+        paymentDao.pay();
+    }
 }
