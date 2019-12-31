@@ -7,17 +7,19 @@ public class BookRatingVO {
 	private String bookName;
 	private String userId;
 	 
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+
+
 	public String getBookName() {
 		return bookName;
 	}
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public double getScore() {
 		return score;

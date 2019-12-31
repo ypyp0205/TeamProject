@@ -1,5 +1,7 @@
 package VO;
 
+import Dao.BookDao;
+
 import java.util.Comparator;
 
 public class BookVO implements Comparable<BookVO> {
@@ -10,17 +12,12 @@ public class BookVO implements Comparable<BookVO> {
     private String regDate;//책등록일자
     private static int management = 0;//관리 번호
     private String publishCompanyName;//출판사 이름
-    private int salePoint; //판매량
-	private int price;
+    private int salePoint;
     private int stock;//재고
-
-    public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
+    private int price;
+    private double score;//점수 1~10점까지 가능
+    private String comment;//한줄평
+    private String userId;
 
     public BookVO() {
         management++;
@@ -90,17 +87,45 @@ public class BookVO implements Comparable<BookVO> {
         this.stock = stock;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     @Override
     public int compareTo(BookVO o) {
-        if (this.salePoint> o.getSalePoint()) {
+        if (this.salePoint > o.getSalePoint()) {
             return -1;
-        } else if (this.salePoint<o.getSalePoint()) {
+        } else if (this.salePoint < o.getSalePoint()) {
             return 1;
         }
         return 0;
-
-
-
     }
 }

@@ -6,7 +6,7 @@ public class PartnerCompanyManagementServiceImpl implements PartnerCompanyManage
 PartnerCompanyDao partnerCompanyDao=new PartnerCompanyDao();
     @Override
     public void addPartnerCompany() {
-        partnerCompanyDao.addPartnerCompany();
+       // partnerCompanyDao.addPartnerCompany();
     }
 
     @Override
@@ -15,7 +15,7 @@ PartnerCompanyDao partnerCompanyDao=new PartnerCompanyDao();
     }
 
     @Override
-    public void addTransactionalInformation() {
-        partnerCompanyDao.addTransactionalInformation();
+    public void getPartnerList() {
+        partnerCompanyDao.getPartnerList();
     }
 }

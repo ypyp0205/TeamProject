@@ -7,5 +7,11 @@ public interface BookService {
 
     public void adminSearchBuyBook();
 
-    public void  showBestSeller();
+    public void showBestSeller();
+
+    public void bookRating();
+
+    public void userRating();
+
+    public void ratingList();
 }

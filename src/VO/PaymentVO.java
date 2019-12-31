@@ -6,6 +6,7 @@ public class PaymentVO {
     private String regDate;
     private int totPayment=0;
 
+
     public String getUserId() {
         return userId;
     }

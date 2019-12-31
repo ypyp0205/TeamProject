@@ -1,5 +1,6 @@
 package Dao;
 
+import Service.DisplayMenu;
 import VO.BookShoppingBasketVO;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -11,28 +12,42 @@ public class BookShoppingBasketDao {
     private BusinessDao businessDao=new BusinessDao();
     BookShoppingBasketVO bookShoppingBasketVO;
 
+
     public BookShoppingBasketDao() {
     }
 
     public void bookShoppingBasketMenu() {
         Scanner scanner = new Scanner(System.in);
         String menuId;
+        System.out.println("종료를 누르면 로그인후 첫화면으로 이동합니다.");
 
         System.out.println("원하시는 내용을 입력해주세요");
         System.out.println("1.장바구니 목록 확인");
         System.out.println("2.장바구니에 목록 추가");
         System.out.println("3.장바구니 목록 삭제");
         System.out.println("4.결재");
-        menuId = scanner.nextLine();
-        if (menuId.equals("1")) {
-            bookShoppingBasketList();
-        } else if (menuId.equals("2")) {
-            addBookShoppingBasket();
-        } else if (menuId.equals("3")) {
-            removeBookName();
-        } else if (menuId.equals("4")) {
-            paymentDao.pay();
 
+        while(true) {
+            menuId = scanner.nextLine();
+            if (menuId.equals("1")) {
+                bookShoppingBasketList();
+                break;
+            } else if (menuId.equals("2")) {
+                addBookShoppingBasket();
+                break;
+            } else if (menuId.equals("3")) {
+                removeBookName();
+                break;
+            } else if (menuId.equals("4")) {
+                paymentDao.pay();
+                break;
+            } else if (menuId.equals("5")) {
+                bookDao.userRating();
+            } else if (menuId.equals("종료")) {
+                DisplayMenu displayMenu = new DisplayMenu();
+                displayMenu.userMenu();
+                break;
+            }
         }
     }
 
@@ -47,12 +62,12 @@ public class BookShoppingBasketDao {
         stock = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < BookDao.BookList.size(); i++) {
             if (BookDao.BookList.get(i).getName().equals(bookName)) {
-                if (BookDao.BookList.get(i).getStock() - stock <= 0) {
-                    System.out.println("재고가 부족합니다. 현재 " + bookName + "의 재고는 " + (BookDao.BookList.get(i).getStock()) + "개 있습니다." + (stock - BookDao.BookList.get(i).getStock()) + "라도 장바구니에 추가 하시겠습니까?(yes/no)");
+                if (BookDao.BookList.get(i).getStock() - stock < 0) {
+                    System.out.println("재고가 부족합니다. 현재 " + bookName + "의 재고는 " + (BookDao.BookList.get(i).getStock()) + "개 있습니다." + (BookDao.BookList.get(i).getStock()) + "라도 장바구니에 추가 하시겠습니까?(yes/no)");
                     answer = scanner.nextLine();
                     if (answer.toLowerCase().equals("yes")) {
                         bookShoppingBasketVO = new BookShoppingBasketVO();
-                        bookShoppingBasketVO.setAmount(stock - BookDao.BookList.get(i).getStock());
+                        bookShoppingBasketVO.setAmount(BookDao.BookList.get(i).getStock());
                         bookShoppingBasketVO.setId(LoginDao.loginSessionVO.getId());
                         bookShoppingBasketVO.setName(LoginDao.loginSessionVO.getName());
                         bookShoppingBasketVO.setBookName(bookName);
@@ -66,7 +81,7 @@ public class BookShoppingBasketDao {
                         System.out.println("구매가 취소되었습니다.장바구니 목록을 보여드리겠습니다.");
                         bookShoppingBasketList();
                     }
-                } else if (BookDao.BookList.get(i).getStock() - stock > 0) {
+                } else if (BookDao.BookList.get(i).getStock() - stock >=0) {
                     System.out.println(bookName + "을 장바구니에 추가  하시겠습니까?(yes/no)");
                     answer = scanner.nextLine();
                     if (answer.toLowerCase().equals("yes")) {
@@ -89,27 +104,7 @@ public class BookShoppingBasketDao {
         }
         bookShoppingBasketMenu();
     }
-    /* public void BookBasket(String BookName) {
-        System.out.println("----------------------장바구니---------------------------");
-        bookShoppingBasketVO.setName(BookName);
-        bookShoppingBasket.add(bookShoppingBasketVO);
-        System.out.println("원하시는 내용을 입력해주세요");
-        System.out.println("1.장바구니 목록 확인");
-        System.out.println("2.결제하기");
-        System.out.println("3.장바구니 삭제하기");
-        System.out.println("4.검색화면으로 돌아가기");
-        Scanner s = new Scanner(System.in);
-        String userSearch = s.nextLine();
-        if (userSearch.equals("1")) {
-            bookBasketList();
-        } else if (userSearch.equals("2")) {
-            paymentDao.payment();
-        } else if (userSearch.equals("3")) {
-            BookBasketout();
-        } else {
-            bookDao.searchBook();
-        }
-    }*/
+
 
     public void removeBookName() {
         System.out.println("삭제하고 싶은 책 이름을 입력해주세요");
@@ -129,7 +124,6 @@ public class BookShoppingBasketDao {
             System.out.println("===================================================");
             System.out.println("책이름\t\t 수량");
             System.out.println(book.getBookName()+"\t\t "+book.getAmount());
-
             System.out.println("===================================================");
         }
         bookShoppingBasketMenu();

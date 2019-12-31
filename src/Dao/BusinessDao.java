@@ -2,6 +2,7 @@ package Dao;
 
 import VO.BusinessVO;
 
+import java.awt.print.Book;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,8 +41,16 @@ public class BusinessDao {
         businessVO.setPublishingCompanyName(publishingCompanyName);
         businessVO.setQuantity(quantity);
         businessVO.setRegDate(regDate);
+        int sum=quantity;
+        int searchidx=-1;
+        for(int i=0;i<BookDao.BookList.size();i++){
+            if(BookDao.BookList.get(i).getName().equals(bookName)){
+                searchidx=i;
+            }
+        }
+        //System.out.println(BookDao.BookList.get(searchidx).getStock()+sum);
+        BookDao.BookList.get(searchidx).setStock(BookDao.BookList.get(searchidx).getStock()+sum);
         businessList.add(businessVO);
-
     }
     public void deleteTrade() {
         Scanner scanner=new Scanner(System.in);
@@ -56,9 +65,15 @@ public class BusinessDao {
         System.out.println("주문이 취소 되었습니다.");
     }
     public void showTradeHistory(){
-        for (BusinessVO vo:businessList) {
-            System.out.println(vo.getBookName()+"\t"+vo.getPublishingCompanyName()+"\t"+vo.getRegDate());
+        System.out.println("책이름\t수량\t출판사이름\t주문일");
 
+        if(businessList.size()!=0) {
+            for (BusinessVO vo : businessList) {
+                System.out.println(vo.getBookName() + "\t" +vo.getQuantity()+"\t"+ vo.getPublishingCompanyName() + "\t" + vo.getRegDate());
+            }
+        }
+        else{
+            System.out.println("거래내역없음");
         }
     }
 
